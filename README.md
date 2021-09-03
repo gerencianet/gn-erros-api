@@ -7,7 +7,7 @@
 
 Esta página tem como objetivo apresentar uma lista de "Erros da API" retornados por todos os serviços da Gerencianet, que permite ao integrador consultar através do código ou mensagem do erro retornados pela API e, claro, corrigir possíveis erros de validação de dados ou outros similares.
 
-![Gif API erros Gerencianet](https://github.com/gerencianet/gn-erros-api/blob/master/assets/img/consultando_error_exemplo.gif)
+![Gif API erros Gerencianet](https://github.com/gerencianet/gn-erros-api/blob/main/assets/img/consultando_error_exemplo.gif)
 
 ## **Licença**
 [MIT](LICENSE)
