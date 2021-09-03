@@ -1,0 +1,381 @@
+[
+    {
+        "code": "400",
+        "erro": [
+            {
+                "description": "documento_bloqueado",
+                "message": "O documento desta conta tem bloqueios que impedem a emissão",
+                "solve": "Verifique se existe algum bloqueio de emissão em sua conta",
+                "endpoints": [
+                    {
+                        "method": "POST",
+                        "route": "/v2/cob"
+                    }
+                ]
+            },
+            {
+                "description": "chave_invalida",
+                "message": "A chave informada não faz referência à conta Gerencianet autenticada",
+                "solve": "Verifique se está utilizando uma chave referenciada à conta Gerencianet, que está sendo realizado a emissão",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/cob/:txid"
+                    },
+                    {
+                        "method": "PATCH",
+                        "route": "/v2/cob/:txid"
+                    },
+                    {
+                        "method": "POST",
+                        "route": "/v2/pix"
+                    }
+                ]
+            },
+            {
+                "description": "valor_invalido",
+                "message": "Campo valor.original deve ser maior que zero",
+                "solve": "O valor minimo deve ser 0.01",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/cob/:txid"
+                    }
+                ]
+            },
+            {
+                "description": "valor_invalido",
+                "message": "Campo calendario.expiracao deve ser maior que zero",
+                "solve": "O valor minimo para o campo expiração deve ser 1",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/cob/:txid"
+                    },
+                    {
+                        "method": "PATCH",
+                        "route": "/v2/cob/:txid"
+                    }
+                ]
+            },
+            {
+                "description": "valor_invalido",
+                "message": "Documento CPF em devedor.cpf é inválido",
+                "solve": "Verifique se está utilizando um cpf valido, ou consulte em <a href='https://www.situacao-cadastral.com/'>Situação cadastral</a>",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/cob/:txid"
+                    },
+                    {
+                        "method": "PATCH",
+                        "route": "/v2/cob/:txid"
+                    }
+                ]
+            },
+            {
+                "description": "valor_invalido",
+                "message": "Documento CNPJ em devedor.cnpj é inválido",
+                "solve": "Verifique se está utilizando um cnpj valido, ou consulte em <a href='https://www.situacao-cadastral.com/'>Situação cadastral</a>",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/cob/:txid"
+                    },
+                    {
+                        "method": "PATCH",
+                        "route": "/v2/cob/:txid"
+                    }
+                ]
+            },
+            {
+                "description": "cobranca_nao_encontrada",
+                "message": "Nenhuma cobrança encontrada para o txid informado",
+                "solve": "Não foi localizado em sua conta nenhum PIX com o dado informado",
+                "endpoints": [
+                    {
+                        "method": "GET",
+                        "route": "/v2/cob/:txid"
+                    },
+                    {
+                        "method": "PATCH",
+                        "route": "/v2/cob/:txid"
+                    }
+                ]
+            },
+            {
+                "description": "status_cobranca_invalido",
+                "message": "A cobrança não está mais com o status ATIVA",
+                "solve": "Não é possivel realizar alterações em cobranças com status finais",
+                "endpoints": [
+                    {
+                        "method": "PATCH",
+                        "route": "/v2/cob/:txid"
+                    }
+                ]
+            },
+            {
+                "description": "pix_nao_encontrado",
+                "message": "Nenhum pix encontrado para o identificador informado",
+                "solve": "Não foi localizado em sua conta nenhum PIX com o dado informado",
+                "endpoints": [
+                    {
+                        "method": "GET",
+                        "route": "/v2/pix/:e2eId"
+                    },
+                    {
+                        "method": "GET",
+                        "route": "/v2/pix/:e2eId/devolucao/:id"
+                    },
+                    {
+                        "method": "PUT",
+                        "route": "/v2/pix/:e2eId/devolucao/:id"
+                    }
+                ]
+            },
+            {
+                "description": "valor_invalido",
+                "message": "Campo de data fim deve ser maior ou igual ao campo de data inicio",
+                "solve": "Verifique se as datas de inicio e fim estão corretas",
+                "endpoints": [
+                    {
+                        "method": "GET",
+                        "route": "/v2/pix"
+                    },
+                    {
+                        "method": "GET",
+                        "route": "/v2/loc"
+                    },
+                    {
+                        "method": "GET",
+                        "route": "/v2/webhook"
+                    }
+                ]
+            },
+            {
+                "description": "saldo_insuficiente",
+                "message": "Saldo insuficiente para realizar o pagamento",
+                "solve": "Verifique se o saldo da sua conta é superior que o valor da transferencia",
+                "endpoints": [
+                    {
+                        "method": "POST",
+                        "route": "/v2/pix"
+                    }
+                ]
+            },
+            {
+                "description": "devolucao_nao_encontrada",
+                "message": "Nenhuma devolução encontrada para o identificador informado",
+                "solve": "Não foi localizado em sua conta nenhum PIX com o dado informado",
+                "endpoints": [
+                    {
+                        "method": "GET",
+                        "route": "/v2/pix/:e2eId/devolucao/:id"
+                    }
+                ]
+            },
+            {
+                "description": "json_invalido",
+                "message": "Valores ou tipos de campo inválidos",
+                "solve": "Verifique se os campos informados estão de acordo com a solicitação",
+                "endpoints": [
+                    {
+                        "method": "POST",
+                        "route": "/v2/loc"
+                    }
+                ]
+            },
+            {
+                "description": "location_nao_encontrada",
+                "message": "Nenhum location encontrado para o identificador informado",
+                "solve": "Não foi localizado em sua conta nenhum PIX com o dado informado",
+                "endpoints": [
+                    {
+                        "method": "GET",
+                        "route": "/v2/loc/:id"
+                    },
+                    {
+                        "method": "GET",
+                        "route": "/v2/loc/:id/qrcode"
+                    },
+                    {
+                        "method": "DELETE",
+                        "route": "/v2/loc/:id/txid"
+                    }
+                ]
+            },
+            {
+                "description": "valor_invalido",
+                "message": "URL inválida",
+                "solve": "Verifique a URL inserida está no padrão correto",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/webhook/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "valor_invalido",
+                "message": "A URL do webhook deve usar o protocolo HTTPS",
+                "solve": "Verifique se a URL informada está com certificado de protocolo HTTPS ativo",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/webhook/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "webhook_invalido",
+                "message": "A autenticação de TLS mútuo não está configurada na URL informada",
+                "solve": "Essa falha é referente a tentativa de cadastro em seu webhook, no entanto, não foi possível verificar o certificado (CA) da Gerencianet que pode ser obtido por este link (https://pix.gerencianet.com.br/webhooks/chain-pix-prod.crt) no caso de produção. Recomendo verificar a documentação do mTLS  e os exemplos disponibilizados (https://dev.gerencianet.com.br/docs/api-pix-endpoints#section-entendendo-o-padr-o-mtls). Em resumo, a Gerencianet faz 2 requisições ao seu servidor, a primeira sem verificar o certificado e a segunda verificando. Seu servidor deve estar configurado para rejeitar a primeira e aceitar a segunda, fazendo um 'hand-shake'",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/webhook/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "webhook_invalido",
+                "message": "A URL informada está inacessível",
+                "solve": "Verifique se sua URL está acessivel na porta 443 atraves desse site: <a href='https://testeportas.com.br/'>teste de portas</a>",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/webhook/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "webhook_invalido",
+                "message": "A URL informada atingiu o tempo limite de resposta",
+                "solve": "A Gerencianet faz 2 requisições ao seu servidor, a primeira sem verificar o certificado e a segunda verificando. Seu servidor deve estar configurado para rejeitar a primeira e aceitar a segunda, fazendo um 'hand-shake' que pode ocasionar um time-out",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/webhook/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "webhook_invalido",
+                "message": "A requisição na URL informada falhou com o erro: {{errno}} //{{errno}} representa um código de erro do linux: https://man7.org/linux/man-pagesman3/errno.3.html Ex: ECONNRESET, EPIPE",
+                "solve": "Essa falha geralmente é relacionada à configuração do ambiente, como por exemplo, não inserir o certificado necessario para autenticação, entre outros",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/webhook/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "webhook_invalido",
+                "message": "A URL informada respondeu com o código HTTP {{httpStatus}} // {{httpStatus}} representa o status HTTP que a url respondeu. Ex: 400, 403, 500.",
+                "solve": "Esse erro ocorre devido a uma falha na configuração do seu servidor",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/webhook/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "webhook_invalido",
+                "message": "Não foi possível receber uma resposta da URL informada",
+                "solve": "Esse erro ocorre devido a uma falha na configuração do seu servidor",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/webhook/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "limite_criacao_chave_atingido",
+                "message": "O limite de criação de chaves foi atingido",
+                "solve": "Para pessoas físicas, existe um limite de 5 chaves Pix para cada conta. Já para pessoas jurídicas, o limite aumenta para 20 chaves por conta.",
+                "endpoints": [
+                    {
+                        "method": "POST",
+                        "route": "/v2/gn/evp"
+                    }
+                ]
+            },
+            {
+                "description": "chave_nao_encontrada",
+                "message": "A chave informada não foi encontrada",
+                "solve": "Verifique se a chave informada é uma chave aleatoria cadastrada em sua conta Gerencianet",
+                "endpoints": [
+                    {
+                        "method": "DELETE",
+                        "route": "/v2/gn/evp/:chave"
+                    }
+                ]
+            },
+            {
+                "description": "erro_aplicacao",
+                "message": "Ocorreu um erro ao buscar as configurações da conta",
+                "solve": "Verifique se as configurações da conta estão sendo inseridas corretamente",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/gn/config"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "code": "409",
+        "erro": [
+            {
+                "description": "txid_duplicado",
+                "message": "Campo txid informado já foi utilizado em outra cobrança",
+                "solve": "O txid é um campo unico por cobrança",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/cob/:txid"
+                    },
+                    {
+                        "method": "PATCH",
+                        "route": "/v2/cob/:txid"
+                    },
+                    {
+                        "method": "POST",
+                        "route": "/v2/cob"
+                    }
+                ]
+            },
+            {
+                "description": "devolucao_id_duplicado",
+                "message": "O id informado já foi utilizado em outra devolução",
+                "solve": "Para realizar mais de uma devolução para a mesma cobrança é necessario que seja utilizado um id para cada requisição",
+                "endpoints": [
+                    {
+                        "method": "PUT",
+                        "route": "/v2/pix/:e2eId/devolucao/:id"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "code": "422",
+        "erro": [
+            {
+                "description": "pagamento_negado",
+                "message": "Pagamento negado por análises",
+                "solve": "Entre em contato com o suporte Gerencianet",
+                "endpoints": [
+                    {
+                        "method": "POST",
+                        "route": "/v2/pix"
+                    }
+                ]
+            }
+        ]
+    }
+]
