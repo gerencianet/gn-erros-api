@@ -891,6 +891,25 @@
         ]
     },
     {
+        "code": "4600414",
+        "message": "vencimento máximo atingido",
+        "solve": "A data limite é em torno de 3 anos e 5 meses",
+        "endpoints": [
+            {
+                "method": "POST",
+                "route": "/v1/carnet"
+            },
+            {
+                "method": "POST",
+                "route": "/v1/charge/:id/pay"
+            }
+            {
+                "method": "POST",
+                "route": "/v1/charge/one-step"
+            }
+        ]
+    },
+    {
         "code": "4600523",
         "message": "Valor total com desconto está abaixo do mínimo permitido para emissão. Valor total: %s, valor mínimo para emissão: R$ 5,00.",
         "solve": "Verifique se o valor total da cobranca menos o desconto é superior a R$5,00",
