@@ -902,7 +902,7 @@
             {
                 "method": "POST",
                 "route": "/v1/charge/:id/pay"
-            }
+            },
             {
                 "method": "POST",
                 "route": "/v1/charge/one-step"
